@@ -33,9 +33,34 @@ const gridTraveler = (m ,n, memo = {}) =>{
     return memo[key];
 }
 
-console.log(gridTraveler(1,1)); // 1
-console.log(gridTraveler(2,3)); // 3
-console.log(gridTraveler(3,2)); // 3
-console.log(gridTraveler(3,3)); // 6
-console.log(gridTraveler(18,18)); // 2333606220
+// console.log(gridTraveler(1,1)); // 1
+// console.log(gridTraveler(2,3)); // 3
+// console.log(gridTraveler(3,2)); // 3
+// console.log(gridTraveler(3,3)); // 6
+// console.log(gridTraveler(18,18)); // 2333606220
 
+// 例子三 canSum(targetSum, numbers)
+const canSum = (targetSum, numbers, memo={}) => {
+    // base case
+    if (targetSum in memo) return memo[targetSum]; // utilize the memoization
+    if (targetSum === 0) return true; 
+    if (targetSum < 0) return false; 
+    
+    // recursion branch
+    for(let num of numbers){
+        const remainder = targetSum - num; 
+        if(canSum(remainder, numbers, memo) === true){
+            memo[targetSum] = true; // store the result in memo
+            return true;
+        }
+    }
+
+    memo[targetSum] = false; // store the result in memo
+    return false;
+}
+
+// console.log(canSum(7, [2,3])); // true
+// console.log(canSum(7, [5,3,4,7])); // true
+// console.log(canSum(7, [2,4])); // false
+// console.log(canSum(8, [2,3,5])); // true
+// console.log(canSum(300, [7,14])); // false
