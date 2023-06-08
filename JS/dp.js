@@ -64,3 +64,31 @@ const canSum = (targetSum, numbers, memo={}) => {
 // console.log(canSum(7, [2,4])); // false
 // console.log(canSum(8, [2,3,5])); // true
 // console.log(canSum(300, [7,14])); // false
+
+// 例子四 howSum(targetSum, numbers)
+const howSum = (targetSum, numbers, memo={}) => {
+    // base case
+    if(targetSum in memo) return memo[targetSum];
+    if(targetSum === 0) return [];
+    if(targetSum < 0) return null;
+
+    // recursion branch
+    for(num of numbers){
+        const remainder = targetSum - num;
+        const remainderResult = howSum(remainder,numbers, memo);
+        if(remainderResult != null){
+            memo[remainder] = [ ...remainderResult, num]; // [ ...Arr,num] means copy Arr into [] and add num in the end
+            return memo[remainder];
+        }
+    }
+
+    memo[targetSum] = null;
+    return null;
+}
+
+// test
+console.log(howSum(7, [2,3])); // [3,2,2]
+console.log(howSum(7, [5,3,4,7])); // [4,3]
+console.log(howSum(7, [2,4])); // null
+console.log(howSum(8, [2,3,5])); // [2,2,2,2]
+console.log(howSum(300, [7,14])); // null
