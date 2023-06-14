@@ -111,7 +111,70 @@ const bestSum = (targetSum, numbers, memo={}) => {
 }
 
 // // test
-console.log(bestSum(7, [5,3,4,7])); // [7]
-console.log(bestSum(8, [2,3,5])); // [3,5]
-console.log(bestSum(8, [1,4,5])); // [4,4]
-console.log(bestSum(100, [1,2,5,25])); // [25,25,25,25]
+// console.log(bestSum(7, [5,3,4,7])); // [7]
+// console.log(bestSum(8, [2,3,5])); // [3,5]
+// console.log(bestSum(8, [1,4,5])); // [4,4]
+// console.log(bestSum(100, [1,2,5,25])); // [25,25,25,25]
+
+// 例子六 canConstruct(target, wordBank)
+// m: target.length
+// n: wordBank.length
+
+// === brute force ===
+// time complaxity : O(n^m * m) 
+// space complaxity : O(m^2)
+
+// === memolized ===
+// time complaxity : O(n * m^2)
+// space complaxity : O(m^2)
+
+const canConstruct = (target, wordBank, memo={}) => {
+    if(target in memo) return memo[target];
+    // base case
+    if(target === '') return true;
+
+    for(let word of wordBank){
+        if(target.indexOf(word) === 0){ // This means the word string is prefix substring of the target string 
+            const suffix = target.slice(word.length); // get the suffix (from prefix.length to the end)
+            if(canConstruct(suffix,wordBank,memo) === true){
+                memo[target] = true;
+                return true;
+            }
+        }
+    }
+    memo[target] = false;
+    return false;
+}
+
+// // test
+// console.log(canConstruct('abcdef', ['ab','abc','cd','def','abcd'])); // true
+// console.log(canConstruct('skateboard', ['bo','rd','ate','t','ska','sk','boar'])); // false
+// console.log(canConstruct('enterapotentpot', ['a','p','ent','enter','ot','o','t'])); // true
+// console.log(canConstruct('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef',['e','ee','eee','eeee','eeeee','eeeeee']));  // false
+
+// 例子七
+const countConstruct = (target, wordBank, memo={}) => {
+
+    if(target in memo) return memo[target];
+    if(target === '') return 1;
+    let count = 0;
+
+    for(let word of wordBank){
+        if(target.indexOf(word) === 0){
+            const suffix = target.slice(word.length); // get the suffix
+            count += countConstruct(suffix,wordBank,memo);
+        }
+    }
+
+    memo[target] = count;
+    return memo[target];
+}
+
+// // test
+// console.log(countConstruct('purple', ['purp','p','ur','le','purpl'])); // 2
+// console.log(countConstruct('abcdef', ['ab','abc','cd','def','abcd'])); // 1
+// console.log(countConstruct('skateboard', ['bo','rd','ate','t','ska','sk','boar'])); // 0
+// console.log(countConstruct('enterapotentpot', ['a','p','ent','enter','ot','o','t'])); // 4
+// console.log(
+//     countConstruct('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef',
+//     ['e','ee','eee','eeee','eeeee','eeeeee']));  // false
