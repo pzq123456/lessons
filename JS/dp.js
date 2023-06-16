@@ -177,4 +177,32 @@ const countConstruct = (target, wordBank, memo={}) => {
 // console.log(countConstruct('enterapotentpot', ['a','p','ent','enter','ot','o','t'])); // 4
 // console.log(
 //     countConstruct('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef',
-//     ['e','ee','eee','eeee','eeeee','eeeeee']));  // false
+//     ['e','ee','eee','eeee','eeeee','eeeeee']));  // 0
+
+// 例子八 allConstruct(target, wordBank)
+const allConstruct = (target, wordBank, memo={}) => {
+    // Base case
+    if(target === '') return [[]];
+
+    let result = [];
+    
+    for(let word of wordBank){
+        if(target.indexOf(word) === 0){
+            const suffix = target.slice(word.length); // get the suffix
+            const surffixnWays = allConstruct(suffix,wordBank,memo);
+            const targetWays = surffixnWays.map( way => [word,...way]);
+            result.push(...targetWays);
+        }
+    }
+
+    return result;
+}
+
+// // test
+console.log(allConstruct('purple', ['purp','p','ur','le','purpl'])); // [ [ 'purp', 'le' ], [ 'p', 'ur', 'p', 'le' ] ]
+console.log(allConstruct('abcdef', ['ab','abc','cd','def','abcd'])); // [ [ 'abc', 'def' ] ]
+console.log(allConstruct('skateboard', ['bo','rd','ate','t','ska','sk','boar'])); // []
+console.log(allConstruct('enterapotentpot', ['a','p','ent','enter','ot','o','t'])); // []
+// console.log(
+//     allConstruct('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef',
+//     ['e','ee','eee','eeee','eeeee','eeeeee']));  // []
