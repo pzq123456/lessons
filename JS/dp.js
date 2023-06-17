@@ -199,10 +199,12 @@ const allConstruct = (target, wordBank, memo={}) => {
 }
 
 // // test
-console.log(allConstruct('purple', ['purp','p','ur','le','purpl'])); // [ [ 'purp', 'le' ], [ 'p', 'ur', 'p', 'le' ] ]
-console.log(allConstruct('abcdef', ['ab','abc','cd','def','abcd'])); // [ [ 'abc', 'def' ] ]
-console.log(allConstruct('skateboard', ['bo','rd','ate','t','ska','sk','boar'])); // []
-console.log(allConstruct('enterapotentpot', ['a','p','ent','enter','ot','o','t'])); // []
+// console.log(allConstruct('purple', ['purp','p','ur','le','purpl'])); // [ [ 'purp', 'le' ], [ 'p', 'ur', 'p', 'le' ] ]
+// console.log(allConstruct('abcdef', ['ab','abc','cd','def','abcd'])); // [ [ 'abc', 'def' ] ]
+// console.log(allConstruct('skateboard', ['bo','rd','ate','t','ska','sk','boar'])); // []
+// console.log(allConstruct('enterapotentpot', ['a','p','ent','enter','ot','o','t'])); // []
 // console.log(
 //     allConstruct('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef',
 //     ['e','ee','eee','eeee','eeeee','eeeeee']));  // []
+
+
