@@ -30,7 +30,7 @@ const gridTraveler = (m ,n) =>{
     // traverse every element in the table
     for(let i = 0 ; i <= m; i++){
         for(let j = 0; j <= n; j++){
-            let current = table[i][j];
+            const current = table[i][j];
             if( j + 1 <= n ) table[i][j + 1] += current;  
             if( i + 1 <= m ) table[i + 1][j] += current;
         }
