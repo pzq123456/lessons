@@ -1,0 +1,7 @@
+# 基于 [Claude](https://claude.ai/chats) 的个性化口语语料库
+## Topic 1 Teachers
+### 1. Do you want to be a teacher in the future?
+Yes, I'm considering becoming a teacher in the future because I think it would be an interesting and meaningful career. I enjoy working with children and find it rewarding to help them learn and develop. Being a teacher would also allow me to continue working in an academic environment, which I'm used to from my student days. The school schedule and holidays are attractive as well, as teachers have more time off than many other professions. Overall, teaching seems like a relaxed yet intellectually stimulating career that would enable me to make a positive difference in students' lives.
+
+### 2.Do you remember one of your teachers?
+Yes, I have very fond memories of one of my Chinese teachers from when I was a pupil in primary school. He was a middle-aged man who had such passion for the beauty of the Chinese language and literature. I recall how he would read fantastic ancient poems and fiction aloud in class, bringing the words to life with feeling and drama. He really helped open my eyes to the beauty of life and nature expressed in those literary works. Thanks to his engaging teaching style, I grew to appreciate the richness of Chinese culture and language. To this day, I credit that teacher for sparking my interest in Chinese literature and language, which has continued to be a lifelong interest.
